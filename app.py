@@ -2,6 +2,9 @@ import os
 from uuid import uuid4
 
 from flask import Flask, request, render_template, send_from_directory
+import numpy as np
+from keras.preprocessing import image
+from keras.models import load_model
 
 
 app = Flask(__name__)
@@ -13,6 +16,7 @@ APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 classes = ['Eczema', 'Vascular Tumors', 'Bullous Disease', 'Nail Fungus']
 
+new_model = load_model('Static/model/skin_train.h5')
 
 
 @app.route("/")
@@ -36,13 +40,7 @@ def upload():
         destination = "/".join([target, filename])
         print ("Accept incoming file:", filename)
         print ("Save it to:", destination)
-        upload.save(destination)
-        #import tensorflow as tf
-        import numpy as np
-        from keras.preprocessing import image
-        from keras.models import load_model
-       
-        new_model = load_model('Static/model/skin_train.h5')
+        upload.save(destination)   
         new_model.summary()
         test_image = image.load_img('images\\'+filename,target_size=(224,224))
         test_image = image.img_to_array(test_image)
