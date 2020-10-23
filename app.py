@@ -23,7 +23,7 @@ new_model = load_model('Static/model/skin_train.h5')
 def index():
     return render_template("index.html")
 
-@app.route("/upload", methods=["POST"])
+@app.route("/upload", methods=["GET", "POST"])
 def upload():
     target = os.path.join(APP_ROOT, 'images/')
     # target = os.path.join(APP_ROOT, 'static/')
