@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html >
-<!--From https://codepen.io/frytyler/pen/EGdtg-->
+
 <head>
   <meta charset="UTF-8">
   <title>Skin diseases Classifier</title>
@@ -9,6 +9,7 @@
 <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<!-- <link rel="stylesheet" href="../static/css/style.css"> -->
 
 
   
@@ -21,33 +22,6 @@
   </style>
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 
-  <script>
-
-    $("#file-picker").change(function(){
-
-        var input = document.getElementById('file-picker');
-
-        for (var i=0; i<input.files.length; i++)
-        {
-            var ext= input.files[i].name.substring(input.files[i].name.lastIndexOf('.')+1).toLowerCase()
-
-            if ((ext == 'jpg') || (ext == 'png'))
-            {
-                $("#msg").text("Files are supported")
-            }
-            else
-            {
-                $("#msg").text("Files are NOT supported")
-                document.getElementById("file-picker").value ="";
-            }
-
-        }
-
-
-    } );
-
-</script>
-
 </head>
 <body style="background-image: url('https://post.greatist.com/wp-content/uploads/2019/05/Dermatologist_FEmale_Beauty-732x549-Thumbnail.jpg'); 
 background-repeat:no-repeat;
@@ -57,19 +31,19 @@ display:flex;
 ">
 <body>
   
-<marquee direction="left" style="color:orangered;"><h3>SKin diseases Classifier</h3></marquee>
+<marquee direction="left" style="color:rgb(160, 54, 5);"><h3>SKin diseases Classifier</h3></marquee>
 
 <form id="upload-form" action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
 
-<div class="login card" style="color: orangered;">
+<div class="login card" style="color: rgb(160, 54, 5);">
   <pre>
-  <h1 style="width: fit-content;color: orangered;">Upload Image To Classify<br> skin conditions</h1>
+  <h1 style="width: fit-content;color: rgb(160, 54, 5);">Upload Image To Classify<br> skin conditions</h1>
   <strong>Choose Image:</strong>
   <input class="btn btn-primary btn-block btn-large" type="file" name="file" accept="image/*" multiple>
   <input type="submit" value="Predict!" class="btn btn-primary btn-block btn-large">
   </pre>
 </div>
 </form>
-
+<script  src="{{ url_for('static', filename='js/app.js') }}"></script>
 </body>
 </html>
