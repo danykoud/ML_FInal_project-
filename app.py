@@ -4,6 +4,8 @@ from uuid import uuid4
 from flask import Flask, request, render_template, send_from_directory
 import numpy as np
 from keras.preprocessing import image
+import keras
+import tensorflow as tf
 from keras.models import load_model
 
 
@@ -42,8 +44,8 @@ def upload():
         print ("Save it to:", destination)
         upload.save(destination)   
         new_model.summary()
-        test_image = image.load_img('images\\'+filename,target_size=(224,224))
-        test_image = image.img_to_array(test_image)
+        test_image = keras.utils.load_img('images\\'+filename,target_size=(224,224))
+        test_image = tf.keras.utils.img_to_array(test_image)
         test_image = np.expand_dims(test_image, axis =0)
         result = new_model.predict(test_image)
         result1 = result[0]
@@ -61,5 +63,5 @@ def send_image(filename):
     return send_from_directory("images", filename)
 
 if __name__ == "__main__":
-    app.run(debug=False)
+    app.run(debug= True)
   
