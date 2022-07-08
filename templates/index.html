@@ -41,10 +41,16 @@ display:flex;
   <strong>Choose Image:</strong>
   <input class="btn btn-primary btn-block btn-large" type="file" name="file" accept="image/*" multiple>
   <input type="submit" value="Predict!" class="btn btn-primary btn-block btn-large">
+  <br>
+<img src="{{url_for('send_image', filename=image_name)}}" style="width:224px;height:224px;">
+<br>
+<h1> Your Prediction   : <i> {{text}} </i></h1>
+<script  src="{{ url_for('static', filename='js/app.js') }}"></script>
+
   </pre>
 </div>
+
 </form>
-<script  src="{{ url_for('static', filename='js/app.js') }}"></script>
 
 <style>
   @import url(https://fonts.googleapis.com/css?family=Open+Sans);
