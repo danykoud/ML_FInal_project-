@@ -42,9 +42,11 @@ display:flex;
   <input class="btn btn-primary btn-block btn-large" type="file" name="file" accept="image/*" multiple>
   <input type="submit" value="Predict!" class="btn btn-primary btn-block btn-large">
   <br>
+               {% if text %}
 <img src="{{url_for('send_image', filename=image_name)}}" style="width:224px;height:224px;">
 <br>
 <h1> Your Prediction   : <i> {{text}} </i></h1>
+             {% endif %}
 <script  src="{{ url_for('static', filename='js/app.js') }}"></script>
 
   </pre>
