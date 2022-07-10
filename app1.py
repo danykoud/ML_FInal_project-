@@ -1,9 +1,6 @@
 import os
-from uuid import uuid4
-
 from flask import Flask, request, render_template, send_from_directory
 import numpy as np
-from keras.preprocessing import image
 import keras
 import tensorflow as tf
 from keras.models import load_model
