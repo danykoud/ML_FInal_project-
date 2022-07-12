@@ -1,47 +1,47 @@
-<!doctype html>
+<!DOCTYPE html>
 <html >
+
 <head>
   <meta charset="UTF-8">
-  
-  <!-- Make it compatible to mobile devices -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Skin Cancer Lesion Classifier</title>
- 
-  
+  <title>Skin diseases Classifier</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
 </head>
+<body style="background-image: url('https://media.istockphoto.com/photos/cell-structure-with-golden-background-3d-rendering-picture-id1370842668?k=20&m=1370842668&s=612x612&w=0&h=Z9U3_0SdD2mKPkbPL7GTIIv9eVK4OTkO9unQLduD7Og=')">
+<body>
+	<body>
 
-
-<body style="background: #000;">
-
-<h2 style="color:Violet;">Skin Cancer Lesion Classifier</h2><p>
-<h4 style="color:Violet;">Upload an image and click submit</h4>
-
-
-<form method="post" action="/" enctype="multipart/form-data">
-    <dl>
-	<p style="color:Violet;">
-		<input type="file" name="file" autocomplete="off" required>
-	</p>
-    </dl>
-    <p style="color:Violet;">
-	<input type="submit" name="submit" value="Submit">
-    </p>
-</form>
-
-
-
-<p style="color:MediumSeaGreen;">
-	{% with messages = get_flashed_messages() %}
-	  {% if messages %}
-        Diagnosis for the following image is: <u><h3 style="color:MediumSeaGreen;">{{ messages[0] }}</h3></u><br>
-        <img src="{{ messages[1] }}" width="300", height="225">
-       
-	  {% endif %}
-	{% endwith %}
-</p>
-
-
-
+		<div class="container">
+		  
+		  <marquee direction="center" style="color:rgb(205, 78, 185);"><h2>Image Classfication : Eczema, Vascular Tumors, Bullous Disease, Nail Fungus</h2></marquee>
+		  <br><br>
+		  <form class="form-horizontal" action="/submit" method="post" enctype="multipart/form-data">
+		
+			<div class="form-group">
+			  <label class="control-label col-sm-2" for="pwd">Upload Your Image :</label>
+			  <div class="col-sm-10">          
+				<input type="file"   name="my_image" >
+			  </div>
+			</div>
+		
+			<div class="form-group">        
+			  <div class="col-sm-offset-2 col-sm-10">
+				<button type="submit" class="btn btn-success">Submit</button>
+			  </div>
+			</div>
+		  </form>
+		  
+			{% if text %}
+		  <img src="{{img_path}}" height="400px" width="400px">
+			<h2> Your Prediction   : <i> {{text}} </i></h2>
+		
+			{% endif %}
+	
+		{% if message %}
+			<h2> <i> {{message}} </i></h2>
+			{% endif %}
+		</div>
 </body>
-
-
+</html>
