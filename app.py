@@ -1,7 +1,6 @@
 import os
 from flask import Flask, request, render_template
 import numpy as np
-import keras
 import tensorflow as tf
 from keras.models import load_model
 
@@ -14,7 +13,7 @@ new_model = load_model('Static/model/skin_train.h5')
 
 def predict(path):
     new_model.summary()
-    test_image = keras.utils.load_img(path,target_size=(224,224))
+    test_image = tf.keras.utils.load_img(path,target_size=(224,224))
     test_image = tf.keras.utils.img_to_array(test_image)
     test_image = np.expand_dims(test_image, axis =0)
     result = new_model.predict(test_image)
